@@ -4,6 +4,8 @@ variable "droplet_user" {}
 
 variable "docker_compose_version" {}
 
+variable "domain_name" {}
+
 variable "do_project_name" {}
 
 variable "do_project_description" {}
