@@ -1,10 +1,5 @@
 name: deploy
 
-# Enable Buildkit and let compose use it to speed up image building
-env:
-  DOCKER_BUILDKIT: 1
-  COMPOSE_DOCKER_CLI_BUILD: 1
-
 on:
   push:
     branches: [ "stage", "main" ]
@@ -128,17 +123,6 @@ jobs:
         if: steps.apply.outcome == 'failure'
         run: exit 1
 
-      - name: deploy with rsync
-        run: rsync -avz ./app ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }}:~
-
-      - name: docker compose up
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DROPLET_HOST }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: docker-compose -f app/compose.yml up --build -d
-
   plan-and-apply-prod:
     needs: extract-branch
     environment: prod
@@ -230,14 +214,3 @@ jobs:
       - name: fail if apply fails
         if: steps.apply.outcome == 'failure'
         run: exit 1
-
-      - name: deploy with rsync
-        run: rsync -avz ./app ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_HOST }}:~
-
-      - name: docker compose up
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DROPLET_HOST }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: docker-compose -f app/compose.yml up --build -d
