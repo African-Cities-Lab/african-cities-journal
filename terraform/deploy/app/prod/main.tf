@@ -14,7 +14,7 @@ data "terraform_remote_state" "base" {
 }
 
 module "app" {
-  source = "github.com/African-Cities-Lab/african-cities-journal//terraform/modules/app"
+  source = "github.com/African-Cities-Lab/african-cities-journal//terraform/modules/app?ref=develop"
   env    = "prod"
 
   droplet_prefix = var.droplet_prefix

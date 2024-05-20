@@ -1,5 +1,5 @@
 module "base" {
-  source = "github.com/African-Cities-Lab/african-cities-journal//terraform/modules/base"
+  source = "github.com/African-Cities-Lab/african-cities-journal//terraform/modules/base?ref=develop"
 
   ssh_key_name           = var.ssh_key_name
   droplet_user           = var.droplet_user
