@@ -53,6 +53,13 @@ resource "tfe_variable" "docker_compose_version" {
   variable_set_id = tfe_variable_set.base.id
 }
 
+resource "tfe_variable" "domain_name" {
+  key             = "domain_name"
+  value           = var.domain_name
+  category        = "terraform"
+  variable_set_id = tfe_variable_set.base.id
+}
+
 resource "tfe_variable" "do_project_name" {
   key             = "do_project_name"
   value           = var.do_project_name
