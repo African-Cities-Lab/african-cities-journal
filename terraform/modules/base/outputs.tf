@@ -8,6 +8,11 @@ output "droplet_user_data" {
   value       = data.template_file.cloud-init-yaml.rendered
 }
 
+output "domain_name" {
+  description = "Name of the `digitalocean_domain`."
+  value       = digitalocean_domain.domain.name
+}
+
 output "do_project_id" {
   description = "ID of the `digitalocean_project`."
   value       = digitalocean_project.do_project.id
