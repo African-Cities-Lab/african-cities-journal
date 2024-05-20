@@ -13,6 +13,11 @@ variable "docker_compose_version" {
   type        = string
 }
 
+variable "domain_name" {
+  description = "Domain pointing to DigitalOcean name servers."
+  type        = string
+}
+
 variable "do_project_name" {
   description = "The name of the `digitalocean_project`."
   type        = string

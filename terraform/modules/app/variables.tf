@@ -31,6 +31,21 @@ variable "do_ssh_key_id" {
   type        = string
 }
 
+variable "domain_name" {
+  description = "Domain pointing to DigitalOcean name servers."
+  type        = string
+}
+
+variable "a_record_name" {
+  description = "Host name of the A record."
+  type        = string
+}
+
+variable "create_cname" {
+  description = "Whether a www CNAME record should be created."
+  type        = bool
+}
+
 variable "droplet_user_data" {
   description = "User data for the `digitalocean_droplet`."
   type        = string

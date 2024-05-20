@@ -6,6 +6,8 @@ variable "ssh_key_name" {}
 
 variable "docker_compose_version" {}
 
+variable "domain_name" {}
+
 variable "gh_repo_name" {}
 
 variable "gh_owner" {}
